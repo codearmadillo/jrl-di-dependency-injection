@@ -3,7 +3,6 @@ import { Decorators } from './decorators';
 import { Injector } from './injector';
 
 export namespace Classes {
-  @Decorators.Dependency()
   export class Service implements Interfaces.IService {
     private list : string[] = [];
     get() : string[] {
