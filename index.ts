@@ -30,6 +30,7 @@ document.getElementById('addWordToService').addEventListener('click', () => {
   } else {
     engine.service.add(values.value);
   }
+  console.log('\n');
 });
 document.getElementById('addWordToNestedService').addEventListener('click', () => {
   const values = getValues();
@@ -39,4 +40,5 @@ document.getElementById('addWordToNestedService').addEventListener('click', () =
   } else {
     engine.service.nestedService.add(values.value);
   }
+  console.log('\n');
 });

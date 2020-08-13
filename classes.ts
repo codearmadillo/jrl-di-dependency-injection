@@ -10,6 +10,7 @@ export namespace Classes {
     private readonly listSubject : Subject<string[]> = new Subject();
     public readonly list : Observable<string[]> = this.listSubject.asObservable();
     add(value : string) : void {
+      console.log(`NestedService: Adding '${value}'`);
       this.trace.push(value);
       this.listSubject.next(this.trace);
     }
@@ -25,6 +26,7 @@ export namespace Classes {
     private readonly listSubject : Subject<string[]> = new Subject();
     public readonly list : Observable<string[]> = this.listSubject.asObservable();
     add(value : string) : void {
+      console.log(`Service: Adding '${value}'`);
       this.trace.push(value);
       this.listSubject.next(this.trace);
     }
@@ -56,6 +58,13 @@ export namespace Classes {
   export class Engine implements Interfaces.IEngine {
     constructor(
       public service : Service
-    ) { }
+    ) {
+      this.service.list.subscribe((list) => {
+        console.log(`Engine: Value added to Service`);
+      });
+      this.service.nestedService.list.subscribe((list) => {
+        console.log(`Engine: Value added to Service.NestedService`)
+      });
+    }
   }
 }
