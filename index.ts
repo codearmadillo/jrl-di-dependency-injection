@@ -6,6 +6,10 @@ import { Classes } from './classes';
 const client = Injector.resolve<Classes.Client>(Classes.Client);
 const engine = Injector.resolve<Classes.Engine>(Classes.Engine);
 
-/** Debug */
-engine.add('Hey!');
-console.log(client.list());
+/** First level */
+client.service.add('Hello');
+console.log(engine.service.get());
+
+/** Second level */
+engine.service.nestedService.add('World!');
+console.log(client.service.nestedService.get());
