@@ -3,7 +3,7 @@ export namespace Interfaces {
     new(...args: any[]) : T;
   }
   export interface IService {
-    get() : string[];
+    add(value : string) : void;
   }
   export interface IClient {
     
